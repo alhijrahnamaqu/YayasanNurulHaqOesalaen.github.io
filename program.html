@@ -8,8 +8,11 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
-  <!-- AOS CSS Lokal -->
+  <!-- AOS CSS -->
   <link rel="stylesheet" href="assets/aos/aos.css" />
+
+  <!-- Lightbox2 CSS -->
+  <link rel="stylesheet" href="assets/lightbox2/css/lightbox.min.css" />
 
   <style>
     body {
@@ -39,6 +42,7 @@
       background: #40916c;
       padding: 15px;
       text-align: center;
+      position: relative;
     }
 
     nav a {
@@ -49,10 +53,27 @@
       padding: 8px 14px;
       border-radius: 6px;
       transition: background 0.3s ease;
+      display: inline-block;
     }
 
     nav a:hover {
       background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .hamburger {
+      display: none;
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      cursor: pointer;
+      font-size: 24px;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     section {
@@ -97,6 +118,23 @@
       color: #2d6a4f;
     }
 
+    .galeri {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+    }
+
+    .galeri a img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .galeri a:hover img {
+      transform: scale(1.05);
+    }
+
     .back-link {
       display: inline-block;
       margin-top: 30px;
@@ -120,61 +158,23 @@
       margin-top: 60px;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 600px) {
-      body {
-        font-size: 16px;
+      .hamburger {
+        display: block;
       }
 
-      header {
-        padding: 20px 10px;
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        margin-top: 10px;
       }
 
-      .logo {
-        width: 70px;
-      }
-
-      h1 {
-        font-size: 20px;
-      }
-
-      nav {
-        padding: 10px;
+      .nav-links.show {
+        display: flex;
       }
 
       nav a {
-        display: block;
         margin: 8px 0;
-        font-size: 16px;
-      }
-
-      section {
-        margin: 20px 10px;
-        padding: 20px;
-      }
-
-      section h2 {
-        font-size: 22px;
-      }
-
-      .program-list {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .program-card {
-        padding: 16px;
-        font-size: 15px;
-      }
-
-      .back-link {
-        font-size: 14px;
-        padding: 8px 16px;
-      }
-
-      footer {
-        font-size: 14px;
-        padding: 12px;
       }
     }
   </style>
@@ -188,12 +188,15 @@
   </header>
 
   <nav data-aos="fade-up">
-    <a href="index.html">Beranda</a>
-    <a href="tentang.html">Tentang</a>
-    <a href="program.html">Program</a>
-    <a href="galeri.html">Galeri</a>
-    <a href="daftar.html">Pendaftaran</a>
-    <a href="kontak.html">Kontak</a>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Beranda</a>
+      <a href="tentang.html">Tentang</a>
+      <a href="program.html">Program</a>
+      <a href="galeri.html">Galeri</a>
+      <a href="daftar.html">Pendaftaran</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
   </nav>
 
   <section data-aos="fade-up">
@@ -216,20 +219,38 @@
         Kegiatan pembentukan karakter, keterampilan hidup, dan kepemimpinan sejak usia dini.
       </div>
     </div>
-    <a href="index.html" class="back-link" data-aos="fade-left" data-aos-delay="500">← Kembali ke Beranda</a>
+
+    <!-- Galeri dengan Lightbox -->
+    <div class="galeri" data-aos="fade-up" data-aos-delay="600">
+      <a href="assets/galeri1.jpg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="assets/galeri1_thumb.jpg" alt="Galeri 1"></a>
+      <a href="assets/galeri2.jpg" data-lightbox="galeri" data-title="Kegiatan 2"><img src="assets/galeri2_thumb.jpg" alt="Galeri 2"></a>
+      <a href="assets/galeri3.jpg" data-lightbox="galeri" data-title="Kegiatan 3"><img src="assets/galeri3_thumb.jpg" alt="Galeri 3"></a>
+    </div>
+
+    <a href="index.html" class="back-link" data-aos="fade-left" data-aos-delay="700">← Kembali ke Beranda</a>
   </section>
 
   <footer data-aos="fade-up">
     <p>&copy; 2025 Madrasah Ibtidaiyah Nurul Haq Oesalaen</p>
   </footer>
 
-  <!-- AOS JS Lokal -->
+  <!-- AOS JS -->
   <script src="assets/aos/aos.js"></script>
   <script>
     AOS.init({
       duration: 800,
       once: true
     });
+  </script>
+
+  <!-- Lightbox2 JS -->
+  <script src="assets/lightbox2/js/lightbox.min.js"></script>
+
+  <!-- Hamburger Script -->
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
   </script>
 </body>
 </html>
