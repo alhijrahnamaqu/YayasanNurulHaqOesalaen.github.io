@@ -120,14 +120,61 @@
       margin-top: 60px;
     }
 
+    /* RESPONSIVE */
     @media (max-width: 600px) {
-      nav a {
-        display: block;
-        margin: 8px 0;
+      body {
+        font-size: 16px;
+      }
+
+      header {
+        padding: 20px 10px;
       }
 
       .logo {
-        width: 80px;
+        width: 70px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      nav {
+        padding: 10px;
+      }
+
+      nav a {
+        display: block;
+        margin: 8px 0;
+        font-size: 16px;
+      }
+
+      section {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+
+      section h2 {
+        font-size: 22px;
+      }
+
+      .program-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .program-card {
+        padding: 16px;
+        font-size: 15px;
+      }
+
+      .back-link {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+
+      footer {
+        font-size: 14px;
+        padding: 12px;
       }
     }
   </style>
