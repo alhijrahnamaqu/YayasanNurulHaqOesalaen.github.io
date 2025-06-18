@@ -6,6 +6,7 @@
   <title>Galeri Kegiatan - MI Nurul Haq Oesalaen</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/aos/aos.css" />
+
   <style>
     * {
       box-sizing: border-box;
@@ -34,9 +35,13 @@
     }
 
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       background: #40916c;
       padding: 12px 0;
       text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     nav a {
@@ -47,7 +52,6 @@
       padding: 8px 14px;
       border-radius: 6px;
       transition: background 0.3s ease;
-      display: inline-block;
     }
 
     nav a:hover {
@@ -139,7 +143,7 @@
       margin-top: 60px;
     }
 
-    /* Lightbox */
+    /* Lightbox Style */
     .lightbox {
       position: fixed;
       top: 0; left: 0;
@@ -171,56 +175,39 @@
       text-decoration: none;
     }
 
-    /* Hamburger Menu */
-    .menu-toggle {
-      display: none;
-      font-size: 28px;
-      background: none;
-      border: none;
-      color: white;
-      position: absolute;
-      top: 14px;
-      right: 20px;
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      transition: max-height 0.4s ease-in-out;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        position: relative;
-        padding: 14px 20px;
-        text-align: left;
+    /* RESPONSIVE UNTUK HP */
+    @media (max-width: 600px) {
+      header {
+        padding: 20px 10px;
       }
 
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: #40916c;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 10px 0;
-      }
-
-      .nav-links.show {
-        display: flex;
+      h1 {
+        font-size: 20px;
       }
 
       nav a {
-        margin: 10px 20px;
-        font-size: 16px;
+        display: inline-block;
+        margin: 6px 8px;
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr; /* satu kolom di HP */
+        gap: 15px;
+      }
+
+      .gallery-item img {
+        height: auto;
+      }
+
+      .back-link {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+
+      footer {
+        font-size: 14px;
       }
     }
   </style>
@@ -234,15 +221,12 @@
   </header>
 
   <nav>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html">Beranda</a>
-      <a href="tentang.html">Tentang</a>
-      <a href="program.html">Program</a>
-      <a href="galeri.html">Galeri</a>
-      <a href="daftar.html">Pendaftaran</a>
-      <a href="kontak.html">Kontak</a>
-    </div>
+    <a href="index.html">Beranda</a>
+    <a href="tentang.html">Tentang</a>
+    <a href="program.html">Program</a>
+    <a href="galeri.html">Galeri</a>
+    <a href="daftar.html">Pendaftaran</a>
+    <a href="kontak.html">Kontak</a>
   </nav>
 
   <section>
@@ -284,11 +268,6 @@
   <script src="assets/aos/aos.js"></script>
   <script>
     AOS.init();
-
-    function toggleMenu() {
-      const nav = document.getElementById('navLinks');
-      nav.classList.toggle('show');
-    }
   </script>
 </body>
 </html>
